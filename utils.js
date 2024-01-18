@@ -108,9 +108,9 @@ export const Adduserspostgres = async (req, res) => {
     const result = await comparePassword(req.body.password,a);
     console.log(result);
     console.log(a,"2");
-    const newuser = await user.create({ firstName: req.body.firstname ,lastName:req.body.lastname,Password:req.body.password});
+    const newuser = await User.create({ firstName: req.body.firstname ,lastName:req.body.lastname,Password:req.body.password});
     await newuser.save();
-    const users = await user.findAll({
+    const users = await User.findAll({
         attributes: ['firstName']
       });
     res.json({success: "OK",data: users});
